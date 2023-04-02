@@ -79,6 +79,55 @@ zadatak6
 
 =======================================================================
 
+import psycopg2 as psycopg2
+import openpyxl as openpyxl
+
+con=psycopg2.connect(database='KAFE',
+user='postgres',
+password='itoip',
+host='localhost',
+port='5432'
+)
+
+con=psycopg2.connect(database='KAFE',
+user='postgres',
+password='itoip',
+host='localhost',
+port='5432'
+)
+cursor=con.cursor()
+cursor.execute("SELECT NAZIV,CENA FROM KAFE")
+result1=cursor.fetchall()
+
+cursor=con.cursor()
+cursor.execute("SELECT ID_KAFE,NAZIV FROM KAFE")
+result2=cursor.fetchall()
+
+cursor=con.cursor()
+cursor.execute("SELECT NAZIV,KOFEIN FROM KAFE")
+result3=cursor.fetchall()
+
+cursor=con.cursor()
+cursor.execute("SELECT * FROM KAFE")
+result4=cursor.fetchall()
+
+cursor=con.cursor()
+cursor.execute("SELECT NAZIV CENA FROM KAFE WHERE CENA=(SELECT MAX (CENA)FROM KAFE)")
+result5=cursor.fetchall()
+
+cursor=con.cursor()
+cursor.execute("SELECT NAZIV KOFEIN FROM KAFE WHERE KOFEIN=(SELECT MAX(KOFEIN) FROM KAFE)")
+result6=cursor.fetchall()
+cursor.close()
+con.close()
+print(result1)
+print(result2)
+print(result3)
+print(result4)
+print(result5)
+print(result6)
+
+
 
 
 
