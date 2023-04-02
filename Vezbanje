@@ -1,1 +1,90 @@
+zadatak 1
+import openpyxl as openpyxl
+wb=openpyxl.Workbook()  
+ws=wb.active    
+
+ws.title='Stranica 1'
+ws["A1"].value="Prva"
+
+wb.create_sheet("Stranica 2")
+ws=wb["Stranica 2"]
+ws["A1"].value="Druga"
+
+wb.create_sheet("Stranica 3")
+ws=wb.worksheets[2]
+ws["A1"]="Treci"
+
+print(wb.sheetnames)        #spisak svih shhetova
+
+wb.save(filename='excel1.xlsx')    
+
+======================================================================
+zadatak 2
+
+import openpyxl as openpyxl
+wb=openpyxl.load_workbook("excel1.xlsx")
+
+ws=wb["Stranica 4"]
+print(ws.max_column,ws.max_row)
+
+s=ws.max_row
+
+for i in range(2,s+1):
+    r=(ws[i])
+    for i in r:
+        print (i.value)
+
+=======================================================================
+zadatak 3
+
+
+
+
+=======================================================================
+zadata 4
+import openpyxl as openpyxl
+wb=openpyxl.Workbook()  
+ws=wb.active  
+
+ws.title='voce'
+ws["A1"].value="ID"
+ws["B1"].value="naziv"
+ws["C1"].value="cena"
+
+for i in range (2,7):
+    ws.cell(column=1,row=i).value=input("ID  ")
+    ws.cell(column=2,row=i).value=input("Voce  ")
+    ws.cell(column=3,row=i).value=eval(input("cena  "))
+
+f=open('izlaz.txt','w')
+c=ws["A2":"C6"]
+for i in c:
+    print('ID',i[0].value,file=f)
+    print('Naziv',i[1].value,file=f)
+    print('Cena:',i[2].value,file=f)
+    print('==============================',file=f)
+
+f.close
+
+
+
+wb.save(filename='excel3.xlsx')  
+=======================================================================
+zadatak6
+
+
+
+
+
+
+=======================================================================
+
+
+
+
+
+
+
+=======================================================================
+
 
